@@ -9,15 +9,15 @@ Banco
     Banco -> Conta
 
 Dicas:
-Criar classe Cliente que herda da classe Pessoa (Herança) - OK
-    Pessoa tem nome e idade (com getters) - OK
-    Cliente TEM conta (Agregação da classe ContaCorrente ou ContaPoupanca) - OK
-Criar classes ContaPoupanca e ContaCorrente que herdam de Conta - OK
-    ContaCorrente deve ter um limite extra - OK
-    Contas têm agência, número da conta e saldo - OK
-    Contas devem ter método para depósito - OK
+Criar classe Cliente que herda da classe Pessoa (Herança)
+    Pessoa tem nome e idade (com getters)
+    Cliente TEM conta (Agregação da classe ContaCorrente ou ContaPoupanca)
+Criar classes ContaPoupanca e ContaCorrente que herdam de Conta
+    ContaCorrente deve ter um limite extra
+    Contas têm agência, número da conta e saldo
+    Contas devem ter método para depósito
     Conta (super classe) deve ter o método sacar abstrato (Abstração e
-    polimorfismo - as subclasses que implementam o método sacar) - OK
+    polimorfismo - as subclasses que implementam o método sacar)
 
 Criar classe Banco para AGREGAR classes de clientes e de contas (Agregação)
 Banco será responsável autenticar o cliente e as contas da seguinte maneira:

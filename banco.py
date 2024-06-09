@@ -1,19 +1,15 @@
 import clientes
 import contas
+from dataclasses import dataclass, field
 
 # ============================== CLASSE ==============================
 
 
+@dataclass
 class Banco:
-    def __init__(
-            self,
-            agencias: list[int] | None = None,
-            cliente_banco: list[clientes.Cliente] | None = None,
-            conta_banco: list[contas.Conta] | None = None,
-    ) -> None:
-        self.agencias = agencias or []
-        self.cliente_banco = cliente_banco or []
-        self.conta_banco = conta_banco or []
+    agencias: list[int] = field(default_factory=list)
+    cliente_banco: list[clientes.Cliente] = field(default_factory=list)
+    conta_banco: list[contas.Conta] = field(default_factory=list)
 
     def checar_agencia(self, conta) -> bool:
         if conta.agencia in self.agencias:
@@ -80,6 +76,8 @@ if __name__ == '__main__':
     banco.conta_banco.extend(contas_1)
     banco.conta_banco.extend(contas_2)
     banco.agencias.extend([111, 000])
+    banco.agencias.extend([1, 2, 3])
+    banco.agencias.extend([])
     print("\nPRESENTES NO BANCO:")
     print(banco, "\n")
 

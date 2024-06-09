@@ -1,15 +1,14 @@
 from abc import ABC, abstractmethod
+from dataclasses import dataclass
 
 # ============================== ABSTRATA ==============================
 
 
+@dataclass
 class Conta(ABC):
-    def __init__(
-        self, agencia: int, numero: int, _saldo: float = 0
-    ) -> None:
-        self.agencia = agencia
-        self.numero = numero
-        self._saldo = _saldo
+    agencia: int
+    numero: int
+    _saldo: float = 0.0
 
     @abstractmethod
     def sacar(self, valor: float) -> float: ...
@@ -42,13 +41,9 @@ class ContaPoupanca(Conta):
         return super().depositar(valor)
 
 
+@dataclass
 class ContaCorrente(Conta):
-    def __init__(
-        self, agencia: int, numero: int, _saldo: float = 0,
-        limite: float = 0
-    ):
-        super().__init__(agencia, numero, _saldo)
-        self.limite = limite
+    limite: float = 0.0
 
     def sacar(self, valor):
         valor_pos_saque = self._saldo - valor

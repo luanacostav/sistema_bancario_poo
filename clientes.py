@@ -1,10 +1,11 @@
+from dataclasses import dataclass, field
 # ============================== ABSTRATA ==============================
 
 
+@dataclass
 class Pessoa:
-    def __init__(self, nome: str, idade: int) -> None:
-        self._nome = nome
-        self._idade = idade
+    _nome: str
+    _idade: int
 
     @property
     def nome_pessoa(self):
@@ -28,10 +29,9 @@ class Pessoa:
 # ============================== SUBCLASSE ==============================
 
 
+@dataclass
 class Cliente(Pessoa):
-    def __init__(self, nome: str, idade: int) -> None:
-        super().__init__(nome, idade)
-        self.contas: list = []
+    contas: list = field(default_factory=list)
 
     def cliente_contas(self, *conta) -> list:
         self.contas.extend(conta)
@@ -40,7 +40,6 @@ class Cliente(Pessoa):
     def __repr__(self) -> str:
         class_name = type(self).__name__
         attrs = f'({self._nome!r}, {self._idade!r})'
-    # contas_user = [(conta.agencia, conta.numero) for conta in self.contas]
         return f'{class_name} {attrs}'
 
 # ============================== INSTÂNCIA ==============================
